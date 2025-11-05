@@ -14,17 +14,10 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('project_tag', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
-            $table->unique(['project_id', 'tag_id']);
-        });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('project_tag');
         Schema::dropIfExists('tags');
     }
 };
